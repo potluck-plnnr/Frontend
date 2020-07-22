@@ -14,7 +14,8 @@ const User = () => {
                     <option value='organizer'>Organizer</option>
                     <option value='guest'>Guest</option>
                     <option value='other'>Other</option>
-                    </select>
+                </select>
+                <button>Enter</button>
             </form>
         </div>
     )
