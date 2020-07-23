@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
+import styled from 'styled-components';
+
+const Headline = styled.h1`
+text-decoration: underline;
+`
+const Button = styled.button`
+border-radius: 25px;
+background-color: lime;
+color: red;
+`
 
 const Potluck = () => {
  
@@ -26,7 +36,7 @@ const Potluck = () => {
     const formSubmit = e => {
         e.preventDefault();
         console.log('form submitted',);
-        axios.post('https://backend-bw.herokuapp.com/')
+        axios.post('https://backend-bw.herokuapp.com/potluck')
             .then(response => {
                 setHost(response.data)
                 console.log(response.data)
@@ -49,7 +59,9 @@ const Potluck = () => {
     }
 
     return (
-        <div>Host Form
+        <div>
+        <Headline>Host Form</Headline>
+        
             <form onSubmit={formSubmit}> 
                 <label htmlFor='name'>Name</label>
                 <input type='text' name='name' onChange={inputChange} value={formState.name}/>
@@ -58,21 +70,26 @@ const Potluck = () => {
                 <label htmlFor='time'>Time</label>
                 <input type='time'/>
                 <label htmlFor='items'>Dishes Reqested</label>
+                <br></br>
                 <div>
                     <input name='dish' type='checkbox'  />Appetizer
                 </div>
+                <br></br>
                 <div>
                     <input name='dish' type='checkbox' />Entree
                 </div>
+                <br></br>
                 <div>
                     <input name='dish' type='checkbox' />Sides
                 </div>
+                <br></br>
                 <div>
                     <input name='dish' type='checkbox' /> Dessert
                 </div>
+                <br></br>
                 
                
-                <button>Enter</button>
+                <Button>Enter</Button>
             </form>
         </div>
     )
