@@ -6,10 +6,17 @@ import styled from 'styled-components';
 const Headline = styled.h1`
 text-decoration: underline;
 `
+const SubHead = styled.h3`
+border: 2px solid black;
+background-color: red;
+
+`
+
 const Button = styled.button`
 border-radius: 25px;
-background-color: lime;
+background-color: lavender;
 color: red;
+margin: 5% 30%;
 `
 
 const Potluck = () => {
@@ -20,6 +27,10 @@ const Potluck = () => {
         date: '',
         time: '',
         dish: false
+        // appetizer: false,
+        // entree: false,
+        // sides: false,
+        // dessert: false
     })
 
 
@@ -59,8 +70,9 @@ const Potluck = () => {
     }
 
     return (
-        <div>
-        <Headline>Host Form</Headline>
+        <div className='potluck'>
+            <Headline>Host Form</Headline>
+            <SubHead>**Please use this form to create a potluck and indicate your preferences.**</SubHead>
         
             <form onSubmit={formSubmit}> 
                 <label htmlFor='name'>Name</label>
@@ -72,19 +84,19 @@ const Potluck = () => {
                 <label htmlFor='items'>Dishes Reqested</label>
                 <br></br>
                 <div>
-                    <input name='dish' type='checkbox'  />Appetizer
+                    <input className='appetizer' name='dish' type='checkbox'  />Appetizer
                 </div>
                 <br></br>
                 <div>
-                    <input name='dish' type='checkbox' />Entree
+                    <input className='entree' name='dish' type='checkbox' />Entree
                 </div>
                 <br></br>
                 <div>
-                    <input name='dish' type='checkbox' />Sides
+                    <input className='side' name='dish' type='checkbox' />Sides
                 </div>
                 <br></br>
                 <div>
-                    <input name='dish' type='checkbox' /> Dessert
+                    <input className='dessert' name='dish' type='checkbox' /> Dessert
                 </div>
                 <br></br>
                 
