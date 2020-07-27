@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
 import styled from 'styled-components';
@@ -19,10 +19,15 @@ color: red;
 margin: 5% 30%;
 `
 
+const Return = styled.button`
+border-radius: 25px;
+background-color: lavender;
+color: blue;
+margin: 5% 40%;
+`
+
 const Potluck = () => {
- 
-    const [host, setHost] = useState()
-    const [formState, setFormState] = useState({
+    const defaultState = {
         name: '',
         date: '',
         time: '',
@@ -31,8 +36,12 @@ const Potluck = () => {
         // entree: false,
         // sides: false,
         // dessert: false
-    })
-
+    }
+ 
+    const [host, setHost] = useState([]);
+    const [formState, setFormState] = useState(defaultState);
+    const [errors, setErrors] = useState(defaultState);
+    const [buttonDisabled, setButtonDisabled] = useState(true);
 
     let formSchema = yup.object().shape({
         name: yup.string().required('Please provide your name'),
@@ -42,12 +51,16 @@ const Potluck = () => {
 
 });
 
-
+    useEffect(() => {
+        if (formState.name) {
+            setButtonDisabled(!formState.name);
+        }
+    }, [formState]);
 
     const formSubmit = e => {
         e.preventDefault();
         console.log('form submitted',);
-        axios.post('https://backend-bw.herokuapp.com/potluck')
+        axios.post('https://backend-bw.herokuapp.com')
             .then(response => {
                 setHost(response.data)
                 console.log(response.data)
@@ -59,7 +72,18 @@ const Potluck = () => {
 
     const validateChange = e => {
         e.persist();
-
+        yup.reach(formSchema, e.target.name)
+            .validate(e.target.value)
+            .then(valid =>
+                setErrors({
+                    ...errors, [e.target.name]: ''
+                    
+                }))
+            .catch(error =>
+                setErrors({
+                    ...errors, [e.target.name]: error.errors[0]
+                })
+            );
     }
 
     const inputChange = e => {
@@ -70,15 +94,20 @@ const Potluck = () => {
     }
 
     return (
+           
         <div className='potluck'>
             <Headline>Host Form</Headline>
             <SubHead>**Please use this form to create a potluck and indicate your preferences.**</SubHead>
         
             <form onSubmit={formSubmit}> 
                 <label htmlFor='name'>Name</label>
-                <input type='text' name='name' onChange={inputChange} value={formState.name}/>
+                <input type='text' name='name' onChange={inputChange} value={formState.name} />
+                
+                    {errors.name.length > 3 ? (<p className='error'>{errors.name}</p>) : null}
+                    
                 <label htmlFor='date'>Date</label>
-                <input type='date'  min='2018-01-01' max='2030-12-31'/>
+                <input type='date' min='2018-01-01' max='2030-12-31' name='date' />
+
                 <label htmlFor='time'>Time</label>
                 <input type='time'/>
                 <label htmlFor='items'>Dishes Reqested</label>
@@ -101,7 +130,8 @@ const Potluck = () => {
                 <br></br>
                 
                
-                <Button>Enter</Button>
+                <Button id='submit' disabled={buttonDisabled}>Enter</Button>
+                <Return>Return to Home</Return>
             </form>
         </div>
     )
