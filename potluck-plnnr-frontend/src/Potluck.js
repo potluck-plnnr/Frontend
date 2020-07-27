@@ -113,19 +113,19 @@ const Potluck = () => {
                 <label htmlFor='items'>Dishes Reqested</label>
                 <br></br>
                 <div>
-                    <input className='appetizer' name='dish' type='checkbox'  />Appetizer
+                    <input className='appetizer' name='items' type='checkbox'  />Appetizer
                 </div>
                 <br></br>
                 <div>
-                    <input className='entree' name='dish' type='checkbox' />Entree
+                    <input className='entree' name='items' type='checkbox' />Entree
                 </div>
                 <br></br>
                 <div>
-                    <input className='side' name='dish' type='checkbox' />Sides
+                    <input className='side' name='items' type='checkbox' />Sides
                 </div>
                 <br></br>
                 <div>
-                    <input className='dessert' name='dish' type='checkbox' /> Dessert
+                    <input className='dessert' name='items' type='checkbox' /> Dessert
                 </div>
                 <br></br>
                 
