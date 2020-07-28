@@ -31,11 +31,7 @@ const Potluck = () => {
         name: '',
         date: '',
         time: '',
-        dish: false
-        // appetizer: false,
-        // entree: false,
-        // sides: false,
-        // dessert: false
+        items: false
     }
  
     const [host, setHost] = useState([]);
@@ -45,9 +41,9 @@ const Potluck = () => {
 
     let formSchema = yup.object().shape({
         name: yup.string().required('Please provide your name'),
-        date: yup.string().required('Must choose a date.'),
-        time: yup.string().required('Must choose a time.'),
-        dish: yup.boolean().oneOf([true], 'Must check at least one box!')
+        date: yup.date().required('Must choose a date.'),
+        time: yup.string().required(),
+        items: yup.string().oneOf([true], 'Must check at least one box!')
 
 });
 
@@ -113,7 +109,7 @@ const Potluck = () => {
                 <label htmlFor='items'>Dishes Reqested</label>
                 <br></br>
                 <div>
-                    <input className='appetizer' name='items' type='checkbox'  />Appetizer
+                    <input className='appetizer' name='items' type='checkbox'  value='appetizer'/>Appetizer
                 </div>
                 <br></br>
                 <div>
