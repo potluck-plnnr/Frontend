@@ -14,8 +14,8 @@
 }
 
 .App-header {
-  background-color: #336fe6;
-  min-height: 50vh;
+  /* background-color: #336fe6; */
+  min-height: 25vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,4 +45,33 @@ form {
 .attendee {
   display: flex;
   justify-content: center;
+}
+
+.potluck {
+  background-color: burlywood;
+}
+
+body {
+  background-image:url(https://potluckplanner-git-master.build-week1.vercel.app/images/potluck2.jpg);
+}
+
+input {
+  margin: 0 20%;
+  text-align: center;
+}
+
+input.appetizer {
+  margin: 0 2%;
+}
+
+input.entree {
+  margin: 0 2%;
+}
+
+input.side {
+  margin: 0 2%;
+}
+
+input.dessert {
+  margin: 0 2%;
 }

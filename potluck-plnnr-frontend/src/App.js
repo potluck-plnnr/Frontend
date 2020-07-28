@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import User from './Users';
 import Potluck from './Potluck';
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <User />
+        {/* <User /> */}
         
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
