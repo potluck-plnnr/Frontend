@@ -60,7 +60,7 @@ const Potluck = () => {
     const formSubmit = e => {
         e.preventDefault();
         console.log('form submitted',);
-        axios.post('https://backend-bw.herokuapp.com/potluck')
+        axios.post('https://backend-bw.herokuapp.com/potluck', formState)
             .then(response => {
                 setHost(response.data)
                 console.log(response.data)
