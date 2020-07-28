@@ -1,32 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import User from './Users';
-import Potluck from './Potluck';
+import React from "react";
+
+import Login from "./Components/Login";
+import UserDash from "./Components/Private/UserDashboard";
+import Private from "./Utilities/PrivateRoute";
+import Register from "./Components/Register";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <User />
-        
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
-      <div className='attendee'>
-        <Potluck />
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <h1>Plan A Potluck</h1>
+          <Route exact path="/" component={Login} />
+        </header>
+        <Register />
+        <div className="attendee">
+          <Private path="/protected" component={UserDash} />
         </div>
-    </div>
+      </div>
+    </Router>
   );
 }
 
