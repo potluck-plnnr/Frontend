@@ -31,7 +31,7 @@ const Potluck = () => {
         name: '',
         date:'',
         time: '',
-        items : {item1:false, item2:false, item3:false, item4:false}
+        items: false
     }
  
     const [host, setHost] = useState([]);
@@ -60,7 +60,7 @@ const Potluck = () => {
             .then(response => {
                 setHost(response.data)
                 console.log(response.data)
-                console.log('form submitted success', host)
+                console.log('form submitted success', response)
              })
         
             .catch(err => console.log('error', err));
@@ -102,14 +102,14 @@ const Potluck = () => {
                     {errors.name.length > 3 ? (<p className='error'>{errors.name}</p>) : null}
                     
                 <label htmlFor='date'>Date</label>
-                <input type='date' min='2018-01-01' max='2030-12-31' name='date' />
+                <input type='date' min='2018-01-01' max='2030-12-31' name='date' onChange={inputChange} value={formState.date}/>
 
                 <label htmlFor='time'>Time</label>
-                <input type='time'/>
+                <input type='time' name='time' onChange={inputChange} value={formState.time}/>
                 <label htmlFor='items'>Dishes Reqested</label>
                 <br></br>
                 <div>
-                    <input className='appetizer' name='items' type='checkbox'  value='appetizer'/>Appetizer
+                    <input className='appetizer' name='items' type='checkbox' onChange={inputChange} value={formState.items}/>Appetizer
                 </div>
                 <br></br>
                 <div>
