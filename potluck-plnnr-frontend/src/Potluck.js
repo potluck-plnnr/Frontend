@@ -29,9 +29,9 @@ margin: 5% 40%;
 const Potluck = () => {
     const defaultState = {
         name: '',
-        date: '',
+        date:'',
         time: '',
-        items: false
+        items : {item1:false, item2:false, item3:false, item4:false}
     }
  
     const [host, setHost] = useState([]);
@@ -43,7 +43,7 @@ const Potluck = () => {
         name: yup.string().required('Please provide your name'),
         date: yup.date().required('Must choose a date.'),
         time: yup.string().required(),
-        items: yup.string().oneOf([true], 'Must check at least one box!')
+        items: yup.boolean().oneOf([true], 'Must check at least one box!')
 
 });
 
@@ -113,15 +113,15 @@ const Potluck = () => {
                 </div>
                 <br></br>
                 <div>
-                    <input className='entree' name='items' type='checkbox' />Entree
+                    <input className='entree' name='items' type='checkbox' value='entree'/>Entree
                 </div>
                 <br></br>
                 <div>
-                    <input className='side' name='items' type='checkbox' />Sides
+                    <input className='side' name='items' type='checkbox' value='sides'/>Sides
                 </div>
                 <br></br>
                 <div>
-                    <input className='dessert' name='items' type='checkbox' /> Dessert
+                    <input className='dessert' name='items' type='checkbox' value='dessert'/> Dessert
                 </div>
                 <br></br>
                 
