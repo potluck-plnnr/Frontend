@@ -1,3 +1,4 @@
+
 import React from "react";
 
 import Login from "./Components/Login";
@@ -18,6 +19,7 @@ function App() {
         <Register />
         <div className="attendee">
           <Private path="/protected" component={UserDash} />
+        {/* <Potluck /> */}
         </div>
       </div>
     </Router>
