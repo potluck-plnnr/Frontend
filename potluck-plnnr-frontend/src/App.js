@@ -3,13 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import User from './Users';
 import Potluck from './Potluck';
+import GuestForm from './components/Guest'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <User />
-        
+        {/* <User />
+         */}
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -24,7 +25,8 @@ function App() {
         </a> */}
       </header>
       <div className='attendee'>
-        <Potluck />
+        {/* <Potluck /> */}
+        <GuestForm  />
         </div>
     </div>
   );
